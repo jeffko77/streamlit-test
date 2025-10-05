@@ -69,21 +69,6 @@ except Exception as e:
     st.write(f"❌ SQLAlchemy: {e}")
 
 try:
-    import pdfkit
-    st.write("✅ pdfkit")
-    st.write("⚠️ pdfkit needs wkhtmltopdf binary")
-except Exception as e:
-    st.write(f"❌ pdfkit: {e}")
-
-try:
-    import pdfkit
-    # Try to find wkhtmltopdf
-    config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
-    st.write("✅ pdfkit + wkhtmltopdf binary found")
-except Exception as e:
-    st.write(f"❌ pdfkit binary test: {e}")
-
-try:
     import reportlab
     st.write("✅ reportlab")
 except Exception as e:
