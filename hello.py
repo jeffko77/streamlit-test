@@ -80,6 +80,14 @@ except Exception as e:
     st.write(f"❌ pdfkit: {e}")
 
 try:
+    import pdfkit
+    # Try to find wkhtmltopdf
+    config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
+    st.write("✅ pdfkit + wkhtmltopdf binary found")
+except Exception as e:
+    st.write(f"❌ pdfkit binary test: {e}")
+
+try:
     import weasyprint
     st.write("✅ weasyprint")
 except Exception as e:
