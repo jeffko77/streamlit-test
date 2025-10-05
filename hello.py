@@ -1,4 +1,5 @@
 import streamlit as st
+import playwright
 
 # Test each import individually
 try:
