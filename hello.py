@@ -1,4 +1,13 @@
 import streamlit as st
+import subprocess
+import sys
+import os
+
+# Install Playwright browsers on first run
+if not os.path.exists('/home/adminuser/.cache/ms-playwright'):
+    subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"])
+    subprocess.run([sys.executable, "-m", "playwright", "install-deps", "chromium"])
+    
 
 st.title("Dependency Diagnostic Test")
 st.write("Testing each import to find what's breaking...")
