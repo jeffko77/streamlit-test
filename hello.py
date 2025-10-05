@@ -3,11 +3,6 @@ import subprocess
 import sys
 import os
 
-# Install Playwright browsers on first run
-if not os.path.exists('/home/adminuser/.cache/ms-playwright'):
-    subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"])
-    subprocess.run([sys.executable, "-m", "playwright", "install-deps", "chromium"])
-    
 
 st.title("Dependency Diagnostic Test")
 st.write("Testing each import to find what's breaking...")
@@ -30,14 +25,6 @@ try:
     st.write("✅ psycopg2-binary")
 except Exception as e:
     st.write(f"❌ psycopg2-binary: {e}")
-
-try:
-    from playwright.sync_api import sync_playwright
-    st.write("✅ playwright imported")
-    # Try to actually use it
-    st.write("⚠️ Playwright imported but browsers NOT installed yet")
-except Exception as e:
-    st.write(f"❌ playwright: {e}")
 
 try:
     from bs4 import BeautifulSoup
@@ -97,22 +84,10 @@ except Exception as e:
     st.write(f"❌ pdfkit binary test: {e}")
 
 try:
-    import weasyprint
-    st.write("✅ weasyprint")
-except Exception as e:
-    st.write(f"❌ weasyprint: {e}")
-
-try:
     import reportlab
     st.write("✅ reportlab")
 except Exception as e:
     st.write(f"❌ reportlab: {e}")
-
-try:
-    import trafilatura
-    st.write("✅ trafilatura")
-except Exception as e:
-    st.write(f"❌ trafilatura: {e}")
 
 try:
     import lxml
